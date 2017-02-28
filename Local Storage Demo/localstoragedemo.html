@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="local_storage_app">
+  <head>
+    <!-- this example was consulted: http://embed.plnkr.co/ThpFwX7BRhRhNWPuq5ap/preview -->
+    <title>Local Storage Demo</title>
+    <meta charset="utf-8" />
+	<style>
+		.emphasis {
+			background-color: red
+		}
+		.deemphasis {
+			background-color: white
+		}
+	</style>
+  </head>
+  <body ng-controller="MainController as mc">
+    <h1>Local Storage Demo</h1>
+    <h3>List of Presidents of the United States</h3>
+    <ul ng-if="mc.presidents != null">
+      <li ng-repeat="president in mc.presidents" 
+		  ng-mouseenter="mc.emphasis(true, $event)" 
+		  ng-mouseleave="mc.emphasis(false, $event)"
+		  ng-class="mc.background"
+		  id="president{{$index}}">
+		  
+		<!-- NOTE: the property names are not the same as the bound variables -->
+        {{president.name}} ({{president.year}})
+		[<label for="remove">Remove</label>
+		<input name=remove" type="checkbox"  ng-click="mc.remove($index)">]
+		<div ng-show="mc.showEdits"></div>
+		<!--Put editing tools here-->
+      </li>
+    </ul>
+    <label for="presidentName">President Name</label>
+    <input name="presidentName" type="text" ng-model="mc.presidentName" />
+    <br />
+    <br />
+    <label for="presidentYear">President Year</label> 
+    <input name="presidentYear" type="text" ng-model="mc.presidentYear" />
+    <br />
+    <br />
+    <input type="button" value="update" ng-click="mc.update(mc.presidentName, mc.presidentYear)" /> 
+    <script src="https://code.angularjs.org/1.6.2/angular.min.js"></script> 
+    <script src="localstorageapp.js"></script></form>
+  </body>
+</html>

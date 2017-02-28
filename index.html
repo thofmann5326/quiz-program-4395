@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="QuizApp">
+	<head>
+		<script src="angular.js"></script>
+		<script src="app.js"></script>		
+
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div ng-controller="QuizController as qc">
+
+			<input type="button" value="get Questions" ng-click="qc.getQuestions()" />
+			<input type="button" value="get Students" ng-click="qc.getStudents()" />
+			<input type="button" value="getRandomQuestionStudent" ng-click="qc.getRandomQuestionStudent()" />
+			
+			<p>{{qc.selectedStudent.fname}} {{qc.selectedStudent.lname}}</p>
+			<p>{{qc.selectedQuestion.question}}</p>
+			
+			<p><input type="button" value="Correct" ng-click="qc.correct(qc.selectedStudent.fname, qc.selectedStudent.lname, qc.selectedQuestion.question)" />
+			<input type="button" value="Incorrect" ng-click="qc.incorrect(qc.selectedStudent.fname, qc.selectedStudent.lname, qc.selectedQuestion.question)" /></p>
+
+		</div>
+		<div>
+
+		</div>
+	</body>
+</html>
